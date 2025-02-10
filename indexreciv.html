@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+    </title>
+    </head>
+    <style>
+        body {
+            background-color: #844caf;  
+            font-family: Arial, sans-serif; 
+        }
+    </style>
+<body   >
+
+    <h1>swaptext</h1>
+    
+   
+    <label for="inputText">enter text:</label>
+    <input type="text" id="inputText" placeholder="enter text">
+    
+    
+    <button onclick="reverseWords()"> swapword</button>
+    
+  
+    <h2>result</h2>
+    <p id="result"></p>
+
+    <script>
+        function reverseWords() {
+          
+            let inputText = document.getElementById("inputText").value;
+            
+          
+            let x = [];
+            let word = "";
+            let index = 0;  // اضافة الكلمة الى مصفوفه i
+            debugger
+            // .تقسيم النص إلى كلمات 
+            for (let i = 0; i < inputText.length; i++) {
+                let char = inputText[i];
+                
+                if (char === " ") {
+                    // عندما نجد مسافة نضيف الكلمة الى المصفوفة
+                    if (word.length > 0) {
+                        x[index] = word;  // اضافة الكلمة
+                        index++;
+
+                        word = ""; // تفريغ
+                    }
+                } else {
+                    word += char; // إضافة الحرف إلى الكلمة
+                }
+            }
+            
+            // اضافة الكلمة الأخيرة إذا كانت موجودة
+            if (word.length > 0) {
+                x[index] = word; }
+
+            //عكس ترتيب الكلمات 
+            let swapwords = [];
+            let swapindex = 0; //  للمصفوفة المعكوسة i
+            for (let i = x.length - 1; i >= 0; i--) {
+                swapwords[swapindex] = x[i];  // اضافة الكلمة 
+                swapindex++; }
+            
+            //  دمج الكلمات المعكوسة
+            let resultText = "";
+            for (let i = 0; i < swapwords.length; i++) {
+                resultText += swapwords[i] + (i < swapwords.length - 1 ? " " : "");
+            }
+            
+        
+            document.getElementById("result").textContent = resultText;
+        }
+    </script>
+</body>
+</html> 
+
